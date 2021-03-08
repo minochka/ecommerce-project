@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}
+	Home
+{% endblock %}
+
+{% block content %}
+
+	<div class="row">
+		<img class="card-img" src="{% static 'images/sale1.png' %}">
+	</div>
+
+			  <section class="py-5 text-center container">
+		    <div class="row py-lg-5">
+		      <div class="col-lg-6 col-md-8 mx-auto">
+			        <h1 class="fw-light">Album example</h1>
+			      </div>
+			    </div>
+		    </section>		
+
+	<div class="container">
+		<div class="row">
+			{% for product in products %}
+				<div class=" mx-auto col-md-6 col-lg-3 g-3">
+					<div class="card md-4">
+						<div class="p-4">
+							<a href="{{ product.get_url }}"><img class="card-img-top" src={{product.image.url}} alt="{{ product.name }}"></a>					
+						</div>
+
+					    <div class="card-footer d-flex justify-content-between align-items-center" style="background: transparent; border-color: transparent;">
+					    	<p class="font-wieght-bold mb-0">{{ product.name }}</p>
+					    	<h5 class="text-info font-italic mb-0">{{ product.price }}</h5>
+		                </div>
+					</div>
+				</div>
+			{% endfor %}
+		</div>
+	</div>	
+
+{% endblock %}
